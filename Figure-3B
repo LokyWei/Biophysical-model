@@ -1,0 +1,29 @@
+color=['m','r','y','c','b'];
+T0=[0.002,0.004,0.006,0.010,0.020];
+value=zeros(1,501);
+x=zeros(1,501);
+sz = 5;
+
+for j=1:5
+    k=1;
+for i=0:0.0001:0.05
+    
+    t0=T0(j);t1=10^(-9);t2=10^(-6);t3=i;
+    gamma=10^(9);gamma0=10^(9);
+    beta0=0;beta1=10^(6);
+    A=1+gamma*(t1+1/(beta0/(t2*beta1)+1/(t2*t3*beta1)+1/t3)+1/(1/t2+beta1/(t3*beta0+1)));
+    B=t0*gamma0+1;
+    c0=10^(-4);c1=1;c2=1;
+    prob = (-(c1+c2-A*c0+B*c0)+sqrt((c1+c2-A*c0+B*c0)^2+4*c0*c1*(A-B)))/(c0*2*(A-B));
+    value(k)=log(prob);x(k)=i;
+    k=k+1;
+    
+end
+    scatter(x,value,sz,color(j),'filled');hold on;
+end
+
+axis([0 0.05 -8 0]);
+legend('2ms','4ms','6ms','10ms','20ms');
+%title('Ratio of photon absorption by opsin with different β');
+xlabel('τ_{3}/s');
+ylabel('log(R_{opsin})');
