@@ -1,0 +1,20 @@
+a=100;b=10;c=0.2780;m=1;
+sz=5;
+x=zeros(1,1802);y=zeros(1,1802);k=1;
+
+for i=0:0.1:90
+    yield=-1/b/(-(i-90-a))^(m)+c;
+    beta=(1-yield)/10^(-6);
+    x(k)=i;y(k)=beta;k=k+1;
+end
+for i=90:0.1:180
+    yield=-1/b/(i-90+a)^(m)+c;
+    beta=(1-yield)/10^(-6);
+    x(k)=i;y(k)=beta;k=k+1;
+end
+
+scatter(x,y,sz,'b','filled');
+axis([0 180 7.222*10^(5) 7.232*10^(5)]);
+%title('Fractional yield of singlet product with different angles');
+xlabel('θ/degrees');
+ylabel('β coefficient/s^{-1}');
