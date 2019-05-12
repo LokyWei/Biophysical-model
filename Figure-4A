@@ -1,0 +1,29 @@
+a=100;b=10;c=0.2780;m=1;%lifetime of radicals is 1us, for both singlet and triplet states
+sz=5;
+t0=0.0042;t1=10^(-9);t2=10^(-6);t3=0.01;
+gamma=10^(9);gamma0=10^(9);beta0=0;
+c0=10^(-3);c1=1;c2=1;
+B=t0*gamma0+1;
+
+x=zeros(1,1802);yy=zeros(1,1802);k=1;
+
+for i=0:0.1:90
+    y=-1/b/(-(i-90-a))^(m)+c;
+    beta1=(1-y)/10^(-6);
+    A=1+gamma*(t1+1/(beta0/(t2*beta1)+1/(t2*t3*beta1)+1/t3)+1/(1/t2+beta1/(t3*beta0+1)));
+    prob=(-(c1+c2-A*c0+B*c0)+sqrt((c1+c2-A*c0+B*c0)^2+4*c0*c1*(A-B)))/(c0*2*(A-B));
+    x(k)=i;yy(k)=prob;k=k+1;
+end
+for i=90:0.1:180
+    y=-1/b/(i-90+a)^(m)+c;
+    beta1=(1-y)/10^(-6);
+    A=1+gamma*(t1+1/(beta0/(t2*beta1)+1/(t2*t3*beta1)+1/t3)+1/(1/t2+beta1/(t3*beta0+1)));
+    prob=(-(c1+c2-A*c0+B*c0)+sqrt((c1+c2-A*c0+B*c0)^2+4*c0*c1*(A-B)))/(c0*2*(A-B));
+    x(k)=i;yy(k)=prob;k=k+1;
+end
+
+scatter(x,yy,sz,'b','filled');
+axis([0 180 0 1])
+%title('Ratio of photon absorption by opsin with different angle');
+xlabel('θ/degrees');
+ylabel('R_{opsin}');
