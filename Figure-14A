@@ -23,6 +23,6 @@ end
 
 axis([7*10^(5) 7.5*10^(5) 0 1]);
 legend('N_{photon}:C_{1}=10^{-2}','N_{photon}:C_{1}=10^{-3}','N_{photon}:C_{1}=10^{-4}','N_{photon}:C_{1}=10^{-5}');
-%title('Ratio of photon absorption by opsin with different β');
+title('Ratio of photon absorption by opsin with different β');
 xlabel('β coefficient/s^{-1}');
 ylabel('R_{opsin}');
