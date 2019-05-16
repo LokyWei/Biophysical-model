@@ -24,6 +24,6 @@ end
 
 axis([0 0.05 -8 0]);
 legend('2ms','4ms','6ms','10ms','20ms');
-%title('Ratio of photon absorption by opsin with different β');
+title('Logarithm of photon absorption ratio by opsin with different τ_{3}');
 xlabel('τ_{3}/s');
 ylabel('log(R_{opsin})');
