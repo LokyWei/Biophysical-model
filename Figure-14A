@@ -1,0 +1,28 @@
+sz = 5;
+C0=[10^(-2),10^(-3),10^(-4),10^(-5)];%initiation of C0:C1 in various ratio.
+color=['c','r','y','m'];
+y=zeros(1,501);
+x=zeros(1,501);
+
+for j=1:4%Four alternative values for C0(numbers of incident photons).
+    k=1;
+for i=0.7*10^(6):10^(2):0.75*10^(6)
+   
+    t0=0.0042;t1=10^(-9);t2=10^(-6);t3=0.01;%lifetime of different chemicals:τ2,τ3; recovery time of in visual cycle:τ0;
+    gamma1=10^(9);gamma0=10^(9);%rate constant of light absorption of opsin and cryptochrome: γ0,γ1;
+    beta0=0;beta1=i;
+    A=1+gamma1*(t1+1/(beta0/(t2*beta1)+1/(t2*t3*beta1)+1/t3)+1/(1/t2+beta1/(t3*beta0+1)));
+    B=t0*gamma0+1;
+    c0=C0(j);c1=1;c2=1;%Number of incident photons：c0; numbers of opsin and cryptochrome:c1,c2;
+    prob = (-(c1+c2-A*c0+B*c0)+sqrt((c1+c2-A*c0+B*c0)^2+4*c0*c1*(A-B)))/(c0*2*(A-B));%photon absorption ratio of opsin
+    x(i)=i;y(i)=prob;k=k+1;
+    
+end
+    scatter(x,y,sz,color(j),'filled'); hold on;
+end
+
+axis([7*10^(5) 7.5*10^(5) 0 1]);
+legend('N_{photon}:C_{1}=10^{-2}','N_{photon}:C_{1}=10^{-3}','N_{photon}:C_{1}=10^{-4}','N_{photon}:C_{1}=10^{-5}');
+%title('Ratio of photon absorption by opsin with different β');
+xlabel('β coefficient/s^{-1}');
+ylabel('R_{opsin}');
