@@ -25,6 +25,6 @@ end
 
 scatter(x,yy,sz,'b','filled');
 axis([0 180 0 1])
-%title('Ratio of photon absorption by opsin with different angle');
+title('Ratio of photon absorption by opsin with different angle');
 xlabel('θ/degrees');
 ylabel('R_{opsin}');
