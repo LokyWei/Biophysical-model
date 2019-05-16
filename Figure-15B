@@ -31,6 +31,6 @@ end
 
 scatter(x,yy,sz,'b','filled');
 axis([0 180 0 100]);
-%title('Percentage of light intensity difference referred to θ=0');
+title('Percentage of light intensity difference referred to θ=0');
 xlabel('θ/degrees');
 ylabel('Percentage of intensity(%)');
