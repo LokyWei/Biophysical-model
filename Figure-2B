@@ -1,15 +1,17 @@
-a=100;b=10;c=0.2780;m=1;
+a=100;b=10;c=0.2780;m=1;%a,b,c,m are parameters derived from Figure-7B in the paper.
+t=1*10^(-6);%singlet state lifetime: τ2=1us
 sz=5;
-x=zeros(1,1802);y=zeros(1,1802);k=1;
-
+x=zeros(1,1802);y=zeros(1,1802);k=1;%initiation
+%we use a reciprocal function to simulate the curve in Figure-7B
+%(lifetime=1us), and combine the equation: β=ΔΦs/ Δt
 for i=0:0.1:90
     yield=-1/b/(-(i-90-a))^(m)+c;
-    beta=(1-yield)/10^(-6);
+    beta=(1-yield)/t;%β coefficient for singlet-to-triplet conversion
     x(k)=i;y(k)=beta;k=k+1;
 end
 for i=90:0.1:180
     yield=-1/b/(i-90+a)^(m)+c;
-    beta=(1-yield)/10^(-6);
+    beta=(1-yield)/t;
     x(k)=i;y(k)=beta;k=k+1;
 end
 
