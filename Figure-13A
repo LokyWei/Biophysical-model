@@ -1,0 +1,19 @@
+a=100;b=10;c=0.2780;m=1;%a,b,c,m are parameters derived from Figure-7B in the paper.
+t=1*10^(-6);%singlet state lifetime: τ2=1us
+sz=5;
+x=zeros(1,1802);x=zeros(1,1802);k=1;%initiation
+%we use a reciprocal function to simulate the curve in Figure-7B (lifetime=1us)
+for i=0:0.1:90
+    frac=-1/b/(-(i-90-a))^(m)+c;%Fractional yield of singlet product
+    x(k)=i;y(k)=frac;k=k+1;
+end
+for i=90:0.1:180
+    frac=-1/b/(i-90+a)^(m)+c;
+    x(k)=i;y(k)=frac;k=k+1;
+end
+
+scatter(x,y,sz,'b','filled');
+axis([0 180 0.27 0.28]);
+%title('Fractional yield of singlet product');
+xlabel('θ/degrees');
+ylabel('Φs');
