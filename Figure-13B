@@ -17,6 +17,6 @@ end
 
 scatter(x,y,sz,'b','filled');
 axis([0 180 7.222*10^(5) 7.232*10^(5)]);
-%title('Fractional yield of singlet product with different angles');
+title('Fractional yield of singlet product with different angles');
 xlabel('θ/degrees');
 ylabel('β coefficient/s^{-1}');
