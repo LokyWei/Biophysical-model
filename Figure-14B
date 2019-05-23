@@ -13,7 +13,7 @@ for i=0:0.0001:0.05
     beta0=0;beta1=10^(6);
     A=1+gamma1*(t1+1/(beta0/(t2*beta1)+1/(t2*t3*beta1)+1/t3)+1/(1/t2+beta1/(t3*beta0+1)));
     B=t0*gamma0+1;
-    c0=10^(-4);c1=1;c2=1;%Number of incident photons：c0; numbers of opsin and cryptochrome:c1,c2;
+    c0=10^(-2);c1=9;c2=1;%Number of incident photons：c0; numbers of opsin and cryptochrome:c1,c2;
     prob = (-(c1+c2-A*c0+B*c0)+sqrt((c1+c2-A*c0+B*c0)^2+4*c0*c1*(A-B)))/(c0*2*(A-B));%photon absorption ratio of opsin
     value(k)=log(prob);%Logarithm of photon absorption ratio of opsin to visualize the amplification effect.
     x(k)=i;k=k+1;
@@ -22,7 +22,7 @@ end
     scatter(x,value,sz,color(j),'filled');hold on;
 end
 
-axis([0 0.05 -8 0]);
+axis([0 0.05 -11 0]);
 legend('2ms','4ms','6ms','10ms','20ms');
 title('Logarithm of photon absorption ratio by opsin with different τ_{3}');
 xlabel('τ_{3}/s');
